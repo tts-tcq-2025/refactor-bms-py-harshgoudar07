@@ -17,14 +17,7 @@ def vitals_check(temperature, pulseRate, spo2):
         "spo2": is_spo2_ok(spo2)
     }
 
-def blink_alert(duration=6):
-    for _ in range(duration):
-        print('\r* ', end='')
-        sys.stdout.flush()
-        sleep(1)
-        print('\r *', end='')
-        sys.stdout.flush()
-        sleep(1)
+
 
 def alert_if_critical(vitals_status):
     alerts = {
@@ -36,7 +29,7 @@ def alert_if_critical(vitals_status):
     for vital, alert_msg in alerts.items():
         if not vitals_status[vital]:
             print(alert_msg)
-            blink_alert()
+            
             any_alert = True
     return not any_alert
 
